@@ -31,7 +31,7 @@ Describe:
 * Create new order.
 ## Known Bugs
 * No known Bugs
-## licence 
+## License  
 * MIT 
 
 Copyright (c) _7-13-23_ Author: _Mark Courtney_
