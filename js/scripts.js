@@ -12,9 +12,10 @@
 
 
 //Business Logic
-let pizza = new object()
-    pizza.size = "large";
-    pizza.toppings = ["Cheese"];
+function pizza(toppings, size) {
+    this.toppings = toppings;
+    this.size = size;
+}
 
 
 //UI Logic
