@@ -12,42 +12,66 @@
 
 
 //Business Logic
-function pizza(toppings, size) {
+function Pizza(toppings, size) {
     this.toppings = toppings;
     this.size = size;
-}
-
-pizza.prototype.getPrice = function() {
-    let price = 0;
-    if (this.size === "Small") {
-        price += 5.99;
-    } else if (this.size === "Medium") {
-        price += 7.99;
-    } else if (this.size === "Large") {
-        price += 9.99;
-    }
-
-    for (let i = 0; i < this.toppings.length; i++) {
-        if (this.toppings[i] === "Pepperoni" || this.toppings[i] === "Sausage") {
-            price += 1.99;
-        } else if (this.topping[i] === "Mushrooms" || this.topping[i] === "Onions") {
-            price += 0.99;
-        }
-    }
-
-    return price.toFixed(2)
-}
-
-
-//UI Logic
-
-let form = document.querySelector("form");
-let size = form.elements["size"].value;
-let toppings = [];
-for (let i = 0; i < form.elements["toppings"].length; i++) {
-  if (form.elements["toppings"][i].checked) {
-    toppings.push(form.elements["toppings"][i].value);
   }
-}
-console.log(size); 
-console.log(toppings); 
+  
+  Pizza.prototype.calculateCost = function() {
+    let cost = 0;
+  
+    // Calculate cost based on toppings
+    for (let i = 0; i < this.toppings.length; i++) {
+      cost += 1.5;
+    }
+  
+    // Calculate cost based on size
+    if (this.size === 'small') {
+      cost += 10;
+    } else if (this.size === 'medium') {
+      cost += 15;
+    } else if (this.size === 'large') {
+      cost += 20;
+    }
+  
+    return cost;
+  };
+  
+  const form = document.querySelector('#pizza-form');
+  const cheese = document.querySelector('#cheese');
+  const pepperoni = document.querySelector('#pepperoni');
+  const artichoke = document.querySelector('#artichoke');
+  const anchovy = document.querySelector('#anchovy');
+  const size = document.querySelector('#size');
+  const pizzaCost = document.querySelector('#pizza-cost');
+  
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+  
+    const toppings = [];
+  
+    if (cheese.checked) {
+      toppings.push('cheese');
+    }
+  
+    if (pepperoni.checked) {
+      toppings.push('pepperoni');
+    }
+  
+    if (artichoke.checked) {
+      toppings.push('artichoke');
+    }
+  
+    if (anchovy.checked) {
+      toppings.push('anchovy');
+    }
+  
+    const pizza = new Pizza(toppings, size.value);
+    const cost = pizza.calculateCost();
+  
+    // Display total cost
+    pizzaCost.textContent = `Total Cost: $${cost.toFixed(2)}`;
+  });
+  
+ 
+//UI Logic
