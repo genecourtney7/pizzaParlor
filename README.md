@@ -1,7 +1,7 @@
 # ProgramQuiz
 #### By: **Mark Courtney**
 #### _Website for Pizza Parlor._
-https://genecourtney7.github.io/
+https://genecourtney7.github.io/pizzaParlor/
 
 ## Technologies used
 * _developer.mozilla.org_
@@ -37,7 +37,7 @@ pizza3.getCost() === 10
 pizza4.getCost() === 10.5
 
 ## Setup/Installation Requirements
-* Clone this repository to your desktop: `https://genecourtney7.github.io/`
+* Clone this repository to your desktop: `https://genecourtney7.github.io/pizzaParlor/`
 * Open `index.html` in a web browser. 
 * Begin building custom pizza.
 * Select toppings for custom pizza.
