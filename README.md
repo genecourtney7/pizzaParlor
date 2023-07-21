@@ -2,25 +2,39 @@
 #### By: **Mark Courtney**
 #### _Website for Pizza Parlor._
 https://genecourtney7.github.io/
+
 ## Technologies used
 * _developer.mozilla.org_
 * _learnhowtocode.com lessons_
 * _google.com_
 * _vs code terminal_
+
 ## Description
 This is a website that will allow the user to create a custom pizza! They will select from different toppings and place order. They will be able to create a new order.
+
 ## Tests
-Describe: Pizza()
+Describe: Pizza.constructor(toppings, size)
 
-* Test: "It should return a Pizza object with two properties for toppings and size"
-* Code: const myPizza = new Pizza(["anchovies", "pineapple"], "medium");
-* Expected Output: Pizza { toppings: ["anchovies", "pineapple"], size: "medium" }
+Test: It should set the `toppings` and `size` properties to the provided values.
+Code: const pizza = new Pizza(["cheese", "pepperoni"], "medium");
+Expected Output: 
+pizza.toppings[0] === "cheese"
+pizza.toppings[1] === "pepperoni"
+pizza.size === "medium"
 
-Describe:
+Describe: Pizza.getCost()
 
-* Test:
-* Code:
-* Expected Output:
+Test: It should return the correct cost based on the size and number of toppings.
+Code:
+const pizza1 = new Pizza([], "small");
+const pizza2 = new Pizza([], "medium");
+const pizza3 = new Pizza([], "large");
+const pizza4 = new Pizza(["cheese", "pepperoni"], "large");
+Expected Output:
+pizza1.getCost() === 5
+pizza2.getCost() === 8
+pizza3.getCost() === 10
+pizza4.getCost() === 10.5
 
 ## Setup/Installation Requirements
 * Clone this repository to your desktop: `https://genecourtney7.github.io/`
@@ -28,9 +42,10 @@ Describe:
 * Begin building custom pizza.
 * Select toppings for custom pizza.
 * Place order. 
-* Create new order.
+
 ## Known Bugs
 * No known Bugs
+
 ## License  
 * MIT 
 

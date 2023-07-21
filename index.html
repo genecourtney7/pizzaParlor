@@ -2,50 +2,31 @@
 <html lang="en-us">
 <head>
 	<link rel="stylesheet" href="css/styles.css" />
-    <script src="js/scripts.js"></script>
+  <script src="js/scripts.js"></script>
 	<title>Pizza Parlor</title>
 </head>
-  <body>
-    <form id="pizza-form">
-      <label for="toppings">Toppings:</label>
+<body>
+  <h1>Pizza Parlor</h1>
+<form> 
+  <p>Choose Size:</p>
+  <select id="size">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+  </select>
+  <br><br>
+  <label>
+      Choose Toppings:<br><br>
+      <input type="checkbox" id="cheese"> Cheese<br>
+      <input type="checkbox" id="pepperoni"> Pepperoni<br>
+      <input type="checkbox" id="sausage"> Sausage<br>
+      <input type="checkbox" id="canadianBacon"> Canadian Bacon<br>
+      <input type="checkbox" id="mushrooms"> Mushrooms<br>
+  </label>
+  <br>
+  <button id="order">Place Order</button>
+</form>
+<div id="results"></div>
 
-      <br>
-
-      <input type="checkbox" id="cheese" name="toppings" value="cheese">
-      <label for="cheese">Cheese</label>
-
-      <br>
-
-      <input type="checkbox" id="pepperoni" name="toppings" value="pepperoni">
-      <label for="pepperoni">Pepperoni</label>
-
-      <br>
-
-      <input type="checkbox" id="artichoke" name="toppings" value="artichoke">
-      <label for="artichoke">Artichoke</label>
-
-      <br>
-
-      <input type="checkbox" id="anchovy" name="toppings" value="anchovy">
-      <label for="anchovy">Anchovy</label>
-
-      <br>
-
-      <label for="size">Size:</label>
-      <select id="size" name="size">
-        <option value="small">Small</option>
-        <option value="medium">Medium</option>
-        <option value="large">Large</option>
-      </select>
-
-      <br>
-
-      <button type="submit">Order Pizza</button>
-    </form>
-
-    <div id="pizza-cost"></div>
-
-  </body>
-
+</body>
 </html>
-

@@ -1,6 +1,6 @@
 //First create pizza object.
 
-//Then create separate toppings (pepperoni, sausage, canadianBacon, peppers, mushrooms).
+//Then create separate toppings (pepperoni, sausage, canadianBacon, mushrooms).
 
 //Create functions to place toppings on pizza.
 
@@ -8,70 +8,49 @@
 
 //Place order.
 
-//Create new order.
 
 
 //Business Logic
-function Pizza(toppings, size) {
-    this.toppings = toppings;
-    this.size = size;
+
+class Pizza {
+  constructor(toppings, size) {
+      this.toppings = toppings;
+      this.size = size;
   }
-  
-  Pizza.prototype.calculateCost = function() {
-    let cost = 0;
-  
-    // Calculate cost based on toppings
-    for (let i = 0; i < this.toppings.length; i++) {
-      cost += 1.5;
-    }
-  
-    // Calculate cost based on size
-    if (this.size === 'small') {
-      cost += 10;
-    } else if (this.size === 'medium') {
-      cost += 15;
-    } else if (this.size === 'large') {
-      cost += 20;
-    }
-  
-    return cost;
-  };
-  
-  const form = document.querySelector('#pizza-form');
-  const cheese = document.querySelector('#cheese');
-  const pepperoni = document.querySelector('#pepperoni');
-  const artichoke = document.querySelector('#artichoke');
-  const anchovy = document.querySelector('#anchovy');
-  const size = document.querySelector('#size');
-  const pizzaCost = document.querySelector('#pizza-cost');
-  
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-  
-    const toppings = [];
-  
-    if (cheese.checked) {
-      toppings.push('cheese');
-    }
-  
-    if (pepperoni.checked) {
-      toppings.push('pepperoni');
-    }
-  
-    if (artichoke.checked) {
-      toppings.push('artichoke');
-    }
-  
-    if (anchovy.checked) {
-      toppings.push('anchovy');
-    }
-  
-    const pizza = new Pizza(toppings, size.value);
-    const cost = pizza.calculateCost();
-  
-    // Display total cost
-    pizzaCost.textContent = `Total Cost: $${cost.toFixed(2)}`;
-  });
+  price() {
+      let cost = 0;
+      if (this.size == "small") {
+          cost += 5;
+      }
+      else if (this.size == "medium") {
+          cost += 7;
+      }
+      else {
+          cost += 10;
+      }
+      cost += .25 * this.toppings.length;
+      return cost;
+  }
+
+}
   
  
 //UI Logic
+window.onload = function () {
+  const orderButton = document.getElementById("order");
+  orderButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    const toppings = [];
+    const toppingsCheckboxes = document.querySelectorAll("input[type=checkbox]");
+    for (let i = 0; i < toppingsCheckboxes.length; i++) {
+      if (toppingsCheckboxes[i].checked) {
+        toppings.push(toppingsCheckboxes[i].id);
+      }
+    }
+    const sizeSelect = document.getElementById("size");
+    const size = sizeSelect.options[sizeSelect.selectedIndex].value;
+    const pizza = new Pizza(toppings, size);
+    const resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = `Your pizza costs $${pizza.price()}`;
+  });
+};
